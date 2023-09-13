@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Vue App Prototype</title>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Trip Planner</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="TopLocations.html">Trending</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Community
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" data-toggle="modal" data-target="#SignInModalCenter">Sign In</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#SignUpModalCenter">Sign Up</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="user.html">My Account</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <a href="search.html"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></a>
+        </form>
+      </div>
+    </nav>
+
+    <div>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Where to Next?</h1>
+          <p class="lead">You're almost there!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" alt="blank user icon" id="userImg">
+        </div>
+        <div class="col">
+          <h1>Welcome, User</h1>
+          <button type="button" class="btn btn-primary">Edit Account</button>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="modal fade" id="SignInModalCenter" tabindex="-1" role="dialog" aria-labelledby="SignInModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Sign In</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                  else.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <a href="#">Forgot Password?</a>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Sign In</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="SignUpModalCenter" tabindex="-1" role="dialog" aria-labelledby="SignUpModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="CreateFirstName">First Name</label>
+                  <input type="text" class="form-control" id="CreateFirstName" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="CreateLastName">Last Name</label>
+                  <input type="text" class="form-control" id="CreateLastName" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputEmail4">Email</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="inputPassword4">Password</label>
+                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Create Account</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="userContainer">
+    <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-my-trips-tab" data-toggle="pill" href="#pills-my-trips" role="tab"
+          aria-controls="pills-my-trips" aria-selected="true">My Trips</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-favorites-tab" data-toggle="pill" href="#pills-favorites" role="tab"
+          aria-controls="pills-favorites" aria-selected="false">Favorites</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-wishlist-tab" data-toggle="pill" href="#pills-wishlist" role="tab"
+          aria-controls="pills-wishlist" aria-selected="false">Wishlist</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-my-trips" role="tabpanel" aria-labelledby="pills-my-trips-tab">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top" src="https://media.timeout.com/images/105895314/750/422/image.jpg"
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Miami</h5>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyTripModalCenter">
+                Edit your Miami Trip
+              </button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
+                viewBox="0 0 16 16">
+                <path
+                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
+                <path
+                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
+                <path
+                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
+                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
+              </svg>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top"
+              src="https://media.istockphoto.com/id/1155452568/photo/milwaukee-wisconsin-usa-downtown-city-skyline-on-lake-michigan.jpg?s=612x612&w=0&k=20&c=dcPXDzZX1RSqwmGMrqKhEdEfelwHiRIa1rOnf3-2eLc="
+              alt="Card image cap ">
+            <div class="card-body">
+              <h5 class="card-title">Milwaukee</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyTripModalCenter">
+                Edit your Milwaukee Trip
+              </button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
+                viewBox="0 0 16 16">
+                <path
+                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
+                <path
+                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
+                <path
+                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
+                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
+              </svg>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="https://cdn.britannica.com/93/94493-050-35524FED/Toronto.jpg"
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Toronto</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyTripModalCenter">
+                Edit Your Toronto Trip
+              </button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
+                viewBox="0 0 16 16">
+                <path
+                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
+                <path
+                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
+                <path
+                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
+                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="pills-favorites" role="tabpanel" aria-labelledby="pills-favorites-tab">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top"
+              src="https://i.natgeofe.com/n/2f26e117-08d9-4364-a76b-817421bfc5d6/denver-travel_4x3.jpg"
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Denver</h5>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FavoriteModalCenter">
+                Plan your Denver Trip
+              </button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
+                <path
+                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
+                <path
+                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
+                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
+              </svg>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top"
+              src="https://www.visittheusa.com/sites/default/files/styles/hero_l/public/images/hero_media_image/2017-10/ee9c84a68a8809d23b3e004d27293b6f.jpeg?h=48d516a6&itok=3GwefNfm"
+              alt="Card image cap" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Green Bay</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FavoriteModalCenter">
+                Plan your Green Bay Trip
+              </button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
+                <path
+                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
+                <path
+                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
+                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
+              </svg>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top"
+              src="https://assets.editorial.aetnd.com/uploads/2009/12/gettyimages-858637934.jpg?width=768"
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Grand Canyon</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FavoriteModalCenter">
+                Plan Your Grand Canyon Trip
+              </button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
+                <path
+                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
+                <path
+                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
+                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-wishlist" role="tabpanel" aria-labelledby="pills-wishlist-tab"><div class="card-deck">
+        <div class="card">
+          <img class="card-img-top" src="https://media.architecturaldigest.com/photos/5da74823d599ec0008227ea8/4:3/w_3000,h_2250,c_limit/GettyImages-946087016.jpg"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">New York</h5>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#WishlistModalCenter">
+              Plan your New York Trip
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clipboard2-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z"/>
+              <path fill-rule="evenodd" d="M4.174 1h-.57a1.5 1.5 0 0 0-1.5 1.5v12a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-12a1.5 1.5 0 0 0-1.5-1.5h-.642c.055.156.085.325.085.5V2c0 .828-.668 1.5-1.492 1.5H5.581A1.496 1.496 0 0 1 4.09 2v-.5c0-.175.03-.344.085-.5Zm3.894 5.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top"
+            src="https://cdn.choosechicago.com/uploads/2022/06/wygyk-agnostic-A.Alexander_5cloudgateMay13-scaled.jpg"
+            alt="Card image cap ">
+          <div class="card-body">
+            <h5 class="card-title">Chicago</h5>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#WishlistModalCenter">
+              Plan your Chicago Trip
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clipboard2-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z"/>
+              <path fill-rule="evenodd" d="M4.174 1h-.57a1.5 1.5 0 0 0-1.5 1.5v12a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-12a1.5 1.5 0 0 0-1.5-1.5h-.642c.055.156.085.325.085.5V2c0 .828-.668 1.5-1.492 1.5H5.581A1.496 1.496 0 0 1 4.09 2v-.5c0-.175.03-.344.085-.5Zm3.894 5.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="https://www.sftravel.com/sites/default/files/styles/hero/public/2022-10/baker-beach.jpg.webp?itok=AlgDdT1G"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">San Francisco</h5>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#WishlistModalCenter">
+              Plan Your San Francisco Trip
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clipboard2-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z"/>
+              <path fill-rule="evenodd" d="M4.174 1h-.57a1.5 1.5 0 0 0-1.5 1.5v12a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-12a1.5 1.5 0 0 0-1.5-1.5h-.642c.055.156.085.325.085.5V2c0 .828-.668 1.5-1.492 1.5H5.581A1.496 1.496 0 0 1 4.09 2v-.5c0-.175.03-.344.085-.5Zm3.894 5.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z"/>
+            </svg>
+          </div>
+        </div>
+      </div></div>
+    </div> 
+  </div>
+  </div>
+
+  <!-- My Trip Modal -->
+  <div class="modal fade" id="MyTripModalCenter" tabindex="-1" role="dialog" aria-labelledby="MyTripModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">My Trip</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+              <div class="col">
+                  <label for="MyTripsStartDate">Trip Start Date</label>
+                  <input type="date" class="" id="MyTripsStartDate">
+              </div>
+              <div class="col">
+                  <label for="MyTripsEndDate">Trip End Date</label>
+                  <input type="date" class="" id="MyTripsEndDate">
+              </div>
+            </div>
+            <br>
+            <form>
+              <div class="form-group">
+                <label for="numOfTravelersMyTrips">How many people will be on your trip?</label>
+                <input type="number" class="form-control" id="numOfTravelersMyTrips">
+              </div>
+              <br>
+              <label for="">Do you need a flight?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioMyTrips1">
+                <label class="form-check-label" for="flightRadio1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioMyTrips2" checked>
+                <label class="form-check-label" for="flightRadio2">
+                  No
+                </label>
+              </div>
+              <br>
+              <label for="">Do you need a rental car?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio1MyTrips">
+                <label class="form-check-label" for="rentalRadio1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio2MyTrips" checked>
+                <label class="form-check-label" for="rentalRadio2">
+                  No
+                </label>
+              </div>
+              <br>
+              <label for="">What activites are you interested in?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="MyTripsCheckDefault1">
+                <label class="form-check-label" for="MyTripsCheckDefault1">
+                  Hiking
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="MyTripsCheckDefault2">
+                <label class="form-check-label" for="MyTripsCheckDefault2">
+                  Day Trips
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="MyTripsCheckDefault3">
+                <label class="form-check-label" for="MyTripsCheckDefault3">
+                  Local Food
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="MyTripsCheckDefault4">
+                <label class="form-check-label" for="MyTripsCheckDefault4">
+                  Tours
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="MyTripsCheckDefault5">
+                <label class="form-check-label" for="MyTripsCheckDefault5">
+                  Default checkbox
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="MyTripsCheckDefault6">
+                <label class="form-check-label" for="MyTripsCheckDefault6">
+                  Explore Night Life
+                </label>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="extraInformationMyTrips">Extra Information</label>
+                <textarea class="form-control" id="extraInformationMyTrips" rows="3"></textarea>
+              </div>
+            </form>
+            
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save Trip</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Favorite Modal -->
+  <div class="modal fade" id="FavoriteModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="FavoriteModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Favorites</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+              <div class="col">
+                  <label for="FavoritesStartDate">Trip Start Date</label>
+                  <input type="date" class="" id="FavoritesStartDate">
+              </div>
+              <div class="col">
+                  <label for="FavoritesEndDate">Trip End Date</label>
+                  <input type="date" class="" id="FavoritesEndDate">
+              </div>
+            </div>
+            <br>
+            <form>
+              <div class="form-group">
+                <label for="numOfTravelersFavorites">How many people will be on your trip?</label>
+                <input type="number" class="form-control" id="numOfTravelersFavorites">
+              </div>
+              <br>
+              <label for="">Do you need a flight?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioFavorites1">
+                <label class="form-check-label" for="flightRadio1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioFavorites2" checked>
+                <label class="form-check-label" for="flightRadio2">
+                  No
+                </label>
+              </div>
+              <br>
+              <label for="">Do you need a rental car?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio1Favorites">
+                <label class="form-check-label" for="rentalRadio1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio2Favorites" checked>
+                <label class="form-check-label" for="rentalRadio2">
+                  No
+                </label>
+              </div>
+              <br>
+              <label for="">What activites are you interested in?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="FavoriteCheckDefault1">
+                <label class="form-check-label" for="FavoriteCheckDefault1">
+                  Hiking
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="FavoriteCheckDefault2">
+                <label class="form-check-label" for="FavoriteCheckDefault2">
+                  Day Trips
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="FavoriteCheckDefault3">
+                <label class="form-check-label" for="FavoriteCheckDefault3">
+                  Local Food
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="FavoriteCheckDefault4">
+                <label class="form-check-label" for="FavoriteCheckDefault44">
+                  Tours
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="FavoriteCheckDefault5">
+                <label class="form-check-label" for="FavoriteCheckDefault5">
+                  Default checkbox
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="FavoriteCheckDefault6">
+                <label class="form-check-label" for="FavoriteCheckDefault6">
+                  Explore Night Life
+                </label>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="extraInformationFavorites">Extra Information</label>
+                <textarea class="form-control" id="extraInformationFavorites" rows="3"></textarea>
+              </div>
+            </form>
+            
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save Trip</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Modal -->
+  <div class="modal fade" id="WishlistModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="WishlistModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Wishlist Trip</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+              <div class="col">
+                  <label for="WishlistStartDate">Trip Start Date</label>
+                  <input type="date" class="" id="WishlistStartDate">
+              </div>
+              <div class="col">
+                  <label for="WishlistEndDate">Trip End Date</label>
+                  <input type="date" class="" id="WishlistEndDate">
+              </div>
+            </div>
+            <br>
+            <form>
+              <div class="form-group">
+                <label for="numOfTravelersWishlist">How many people will be on your trip?</label>
+                <input type="number" class="form-control" id="numOfTravelersWishlist">
+              </div>
+              <br>
+              <label for="">Do you need a flight?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioWishlist1">
+                <label class="form-check-label" for="flightRadio1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioWishlist2" checked>
+                <label class="form-check-label" for="flightRadio2">
+                  No
+                </label>
+              </div>
+              <br>
+              <label for="">Do you need a rental car?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio1Wishlist">
+                <label class="form-check-label" for="rentalRadio1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio2Wishlist" checked>
+                <label class="form-check-label" for="rentalRadio2">
+                  No
+                </label>
+              </div>
+              <br>
+              <label for="">What activites are you interested in?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault1">
+                <label class="form-check-label" for="WishlistCheckDefault1">
+                  Hiking
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault2">
+                <label class="form-check-label" for="WishlistCheckDefault2">
+                  Day Trips
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault3">
+                <label class="form-check-label" for="WishlistCheckDefault3">
+                  Local Food
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault4">
+                <label class="form-check-label" for="WishlistCheckDefault4">
+                  Tours
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault5">
+                <label class="form-check-label" for="WishlistCheckDefault5">
+                  Default checkbox
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault6">
+                <label class="form-check-label" for="WishlistCheckDefault6">
+                  Explore Night Life
+                </label>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="extraInformationWishlist">Extra Information</label>
+                <textarea class="form-control" id="extraInformationWishlist" rows="3"></textarea>
+              </div>
+            </form>
+            
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save Trip</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link px-2 text-body-secondary">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="TopLocations.html" class="nav-link px-2 text-body-secondary">Trending</a>
+        </li>
+        <li class="nav-item">
+          <a href="user.html" class="nav-link px-2 text-body-secondary">Community</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
+        </li>
+      </ul>
+      <p class="text-center text-body-secondary">© 2023 Company, Inc</p>
+    </footer>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

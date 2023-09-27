@@ -5,17 +5,18 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\app.css">
 
   <title>Vue App Prototype</title>
 </head>
 
 <body>
-  <div class="container">
+  <div id="app" class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Trip Planner</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -151,182 +152,92 @@
   </div>
 
   <div class="container" id="userContainer">
-    <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+    <ul class="nav nav-tabs nav-justified mb-3" id="tabs-tab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="pills-my-trips-tab" data-toggle="pill" href="#pills-my-trips" role="tab"
-          aria-controls="pills-my-trips" aria-selected="true">My Trips</a>
+        <a class="nav-link active" id="tabs-my-trips-tab" data-toggle="tab" href="#tabs-my-trips" role="tab"
+          aria-controls="tabs-my-trips" aria-selected="true">My Trips</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="pills-favorites-tab" data-toggle="pill" href="#pills-favorites" role="tab"
-          aria-controls="pills-favorites" aria-selected="false">Favorites</a>
+        <a class="nav-link" id="tabs-favorites-tab" data-toggle="tab" href="#tabs-favorites" role="tab"
+          aria-controls="tabs-favorites" aria-selected="false">Favorites</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="pills-wishlist-tab" data-toggle="pill" href="#pills-wishlist" role="tab"
           aria-controls="pills-wishlist" aria-selected="false">Wishlist</a>
-      </li>
+      </li> -->
     </ul>
-    <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-my-trips" role="tabpanel" aria-labelledby="pills-my-trips-tab">
+    <div class="tab-content" id="tabs-tabContent">
+      <div class="tab-pane fade show active" id="tabs-my-trips" role="tabpanel" aria-labelledby="tabs-my-trips-tab">
         <div class="card-deck">
-          <div class="card">
-            <img class="card-img-top" src="https://media.timeout.com/images/105895314/750/422/image.jpg"
+          <div v-for="(item, index) in completedList" v-bind:key="item.name" class="card">
+            <img class="card-img-top"
+              src="https://media.istockphoto.com/id/1128826884/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment.jpg?s=612x612&w=0&k=20&c=390e76zN_TJ7HZHJpnI7jNl7UBpO3UP7hpR2meE1Qd4="
               alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Miami</h5>
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div class="form-check">
+                <input v-model="item.favorited" class="form-check-input" type="checkbox" value="" v-bind:id="'Favorite-' + index ">
+                <label class="form-check-label" v-bind:for="'Favorite-' + index ">
+                  Favorite {{item.name}} 
+                </label>
+              </div>
+              <div class="form-check">
+                <input v-model="item.completed" class="form-check-input" type="checkbox" value="" v-bind:id="'MyTrip-' + index ">
+                <label class="form-check-label" v-bind:for="'MyTrip-' + index ">
+                  Complete {{item.name}} 
+                </label>
+              </div>
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyTripModalCenter">
-                Edit your Miami Trip
+                View your Trip
               </button>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
-                viewBox="0 0 16 16">
-                <path
-                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
-                <path
-                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
-                <path
-                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
-                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
-              </svg>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top"
-              src="https://media.istockphoto.com/id/1155452568/photo/milwaukee-wisconsin-usa-downtown-city-skyline-on-lake-michigan.jpg?s=612x612&w=0&k=20&c=dcPXDzZX1RSqwmGMrqKhEdEfelwHiRIa1rOnf3-2eLc="
-              alt="Card image cap ">
-            <div class="card-body">
-              <h5 class="card-title">Milwaukee</h5>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyTripModalCenter">
-                Edit your Milwaukee Trip
+              <button type="button" class="btn btn-secondary" v-on:click.prevent="deleteIt">
+                Delete your Trip
               </button>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
-                viewBox="0 0 16 16">
-                <path
-                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
-                <path
-                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
-                <path
-                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
-                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
-              </svg>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="https://cdn.britannica.com/93/94493-050-35524FED/Toronto.jpg"
-              alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Toronto</h5>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyTripModalCenter">
-                Edit Your Toronto Trip
-              </button>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
-                viewBox="0 0 16 16">
-                <path
-                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
-                <path
-                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
-                <path
-                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
-                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
-              </svg>
-            </div>
+            </div> 
           </div>
         </div>
       </div>
 
-      <div class="tab-pane fade" id="pills-favorites" role="tabpanel" aria-labelledby="pills-favorites-tab">
+      <div class="tab-pane fade" id="tabs-favorites" role="tabpanel" aria-labelledby="tabs-favorites-tab">
         <div class="card-deck">
-          <div class="card">
+          <div v-for="(item, index) in favoriteList" v-bind:key="item.name" class="card">
             <img class="card-img-top"
-              src="https://i.natgeofe.com/n/2f26e117-08d9-4364-a76b-817421bfc5d6/denver-travel_4x3.jpg"
+              src="https://media.istockphoto.com/id/1128826884/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment.jpg?s=612x612&w=0&k=20&c=390e76zN_TJ7HZHJpnI7jNl7UBpO3UP7hpR2meE1Qd4="
               alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Denver</h5>
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div class="form-check">
+                <input v-model="item.favorited" class="form-check-input" type="checkbox" value="" v-bind:id="'Favorite-' + index ">
+                <label class="form-check-label" v-bind:for="'Favorite-' + index ">
+                  Favorite {{item.name}} 
+                </label>
+              </div>
+              <div class="form-check">
+                <input v-model="item.completed" class="form-check-input" type="checkbox" value="" v-bind:id="'MyTrip-' + index ">
+                <label class="form-check-label" v-bind:for="'MyTrip-' + index ">
+                  Complete {{item.name}} 
+                </label>
+              </div>
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FavoriteModalCenter">
-                Plan your Denver Trip
+                Edit your Trip
               </button>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star-fill"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
-                <path
-                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
-                <path
-                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
-                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
-              </svg>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top"
-              src="https://www.visittheusa.com/sites/default/files/styles/hero_l/public/images/hero_media_image/2017-10/ee9c84a68a8809d23b3e004d27293b6f.jpeg?h=48d516a6&itok=3GwefNfm"
-              alt="Card image cap" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Green Bay</h5>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FavoriteModalCenter">
-                Plan your Green Bay Trip
+              <button type="button" class="btn btn-secondary" v-on:click.prevent="deleteIt">
+                Delete your Trip
               </button>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star-fill"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
-                <path
-                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
-                <path
-                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
-                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
-              </svg>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top"
-              src="https://assets.editorial.aetnd.com/uploads/2009/12/gettyimages-858637934.jpg?width=768"
-              alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Grand Canyon</h5>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FavoriteModalCenter">
-                Plan Your Grand Canyon Trip
-              </button>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star-fill"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-clipboard2-heart" viewBox="0 0 16 16">
-                <path
-                  d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z" />
-                <path
-                  d="M3.605 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5h-.5a.5.5 0 0 1 0-1h.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h.5a.5.5 0 0 1 0 1h-.5Z" />
-                <path d="M8.068 6.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z" />
-              </svg>
-            </div>
+            </div> 
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="pills-wishlist" role="tabpanel" aria-labelledby="pills-wishlist-tab"><div class="card-deck">
+      <!-- <div class="tab-pane fade" id="pills-wishlist" role="tabpanel" aria-labelledby="pills-wishlist-tab"><div class="card-deck">
         <div class="card">
           <img class="card-img-top" src="https://media.architecturaldigest.com/photos/5da74823d599ec0008227ea8/4:3/w_3000,h_2250,c_limit/GettyImages-946087016.jpg"
             alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">New York</h5>
+            <h5 class="card-title">New York</h5> -->
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#WishlistModalCenter">
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#WishlistModalCenter">
               Plan your New York Trip
             </button>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
@@ -379,7 +290,7 @@
             </svg>
           </div>
         </div>
-      </div></div>
+      </div></div> -->
     </div> 
   </div>
   </div>
@@ -604,7 +515,7 @@
     </div>
   </div>
 
-  <!-- Wishlist Modal -->
+  <!-- Wishlist Modal
   <div class="modal fade" id="WishlistModalCenter" tabindex="-1" role="dialog"
     aria-labelledby="WishlistModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -712,7 +623,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="container">
     <footer class="py-3 my-4">
@@ -745,6 +656,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/app.js"></script>
+    <script>app.mount('#app');</script>
 </body>
 
 </html>

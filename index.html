@@ -55,563 +55,61 @@
               </div>
         </div>
 
-        <!-- Sign In Modal -->
-        <div class="modal fade" id="SignInModalCenter" tabindex="-1" role="dialog" aria-labelledby="SignInModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Sign In</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        <a href="#">Forgot Password?</a>
-                      </form>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Sign In</button>
-                </div>
-            </div>
-            </div>
-        </div>
 
-        <!-- Sign Up Modal -->
-        <div class="modal fade" id="SignUpModalCenter" tabindex="-1" role="dialog" aria-labelledby="SignUpModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="CreateFirstName">First Name</label>
-                            <input type="text" class="form-control" id="CreateFirstName" placeholder="First Name">
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="CreateLastName">Last Name</label>
-                            <input type="text" class="form-control" id="CreateLastName" placeholder="Last Name">
-                          </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                              <label for="inputEmail4">Email</label>
-                              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                            </div>
-                            <div class="form-group col-md-12">
-                              <label for="inputPassword4">Password</label>
-                              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                            </div>
-                        </div>
-                      </form>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Create Account</button>
-                </div>
-            </div>
-            </div>
-        </div>
+
+        <!-- Sign In Modal-->
+        <signin-modal>
+          <template v-slot:header>Sign In</template>
+        </signin-modal>
+
+        <!-- Sign Up Modal-->
+        <signup-modal>
+          <template v-slot:header>Sign Up</template>
+        </signup-modal>
+
 
         <h1 class="topicHeader">Top Locations</h1>
 
         <div class="card-deck">
-            <div class="card">
-              <img class="card-img-top" src="https://i.natgeofe.com/n/2f26e117-08d9-4364-a76b-817421bfc5d6/denver-travel_4x3.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Denver</h5>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Favorite Denver 
-                  </label>
-                </div>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TopLocationModalCenter">
-                    Plan your Denver Trip
-                </button>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="https://media.architecturaldigest.com/photos/5da74823d599ec0008227ea8/4:3/w_3000,h_2250,c_limit/GettyImages-946087016.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">New York</h5>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Favorite New York 
-                  </label>
-                </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TopLocationModalCenter">
-                    Plan your New York Trip
-                </button>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="https://media.timeout.com/images/105895314/750/422/image.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Miami</h5>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Favorite Miami  
-                  </label>
-                </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TopLocationModalCenter">
-                    Plan Your Miami Trip
-                </button>
-              </div>
-            </div>
+          <location-card name="Denver"></location-card>
+          <location-card name="New York"></location-card>
+          <location-card name="Miami"></location-card>
           </div>
+          
 
           <!-- Top Locations Modal -->
-            <div class="modal fade" id="TopLocationModalCenter" tabindex="-1" role="dialog" aria-labelledby="TopLocationModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Top Locations</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="form-group">
-                        <label for="tripName">Trip Name</label>
-                        <input v-model="newTrip.name" type="text" class="form-control" id="tripName" placeholder="Trip Name">
-                      </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="TopStartDate">Trip Start Date</label>
-                                <input type="date" class="" id="TopStartDate">
-                            </div>
-                            <div class="col">
-                                <label for="TopEndDate">Trip End Date</label>
-                                <input type="date" class="" id="TopEndDate">
-                            </div>
-                          </div>
-                          <br>
-                          <form>
-                            <div class="form-group">
-                              <label for="numOfTravelersTop">How many people will be on your trip?</label>
-                              <input v-model="newTrip.people" type="number" class="form-control" id="numOfTravelersTop">
-                            </div>
-                            <br>
-                            <label for="">Do you need a flight?</label>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioTop1">
-                              <label class="form-check-label" for="flightRadio1">
-                                Yes
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioTop2" checked>
-                              <label class="form-check-label" for="flightRadio2">
-                                No
-                              </label>
-                            </div>
-                            <br>
-                            <label for="">Do you need a rental car?</label>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio1Top">
-                              <label class="form-check-label" for="rentalRadio1">
-                                Yes
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio2Top" checked>
-                              <label class="form-check-label" for="rentalRadio2">
-                                No
-                              </label>
-                            </div>
-                            <br>
-                            <label for="">What activites are you interested in?</label>
-                            <div class="form-check">
-                              <input  class="form-check-input" type="checkbox" value="" id="TopCheckDefault1">
-                              <label class="form-check-label" for="TopCheckDefault1">
-                                Hiking
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="TopCheckDefault2">
-                              <label class="form-check-label" for="TopCheckDefault2">
-                                Day Trips
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="TopCheckDefault3">
-                              <label class="form-check-label" for="TopCheckDefault3">
-                                Local Food
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="TopCheckDefault4">
-                              <label class="form-check-label" for="TopCheckDefault4">
-                                Tours
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="TopCheckDefault5">
-                              <label class="form-check-label" for="TopCheckDefault5">
-                                Default checkbox
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="TopCheckDefault6">
-                              <label class="form-check-label" for="TopCheckDefault6">
-                                Explore Night Life
-                              </label>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                              <label for="extraInformationTop">Extra Information</label>
-                              <textarea class="form-control" id="extraInformationTop" rows="3"></textarea>
-                            </div>
-                          </form>
-                          
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" v-on:click.prevent="addIt">Save Trip</button>
-                    </div>
-                </div>
-                </div>
-            </div>
+          
 
           <h1 class="topicHeader">Trips Near You</h1>
         
           <div class="card-deck">
-            <div class="card">
-              <img class="card-img-top" src="https://media.istockphoto.com/id/1155452568/photo/milwaukee-wisconsin-usa-downtown-city-skyline-on-lake-michigan.jpg?s=612x612&w=0&k=20&c=dcPXDzZX1RSqwmGMrqKhEdEfelwHiRIa1rOnf3-2eLc=" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Milwaukee</h5>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Favorite Milwaukee  
-                  </label>
-                </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#NearYouModalCenter">
-                    Plan your Milwaukee Trip
-                </button>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="https://www.visittheusa.com/sites/default/files/styles/hero_l/public/images/hero_media_image/2017-10/ee9c84a68a8809d23b3e004d27293b6f.jpeg?h=48d516a6&itok=3GwefNfm" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Green Bay</h5>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Favorite Green Bay  
-                  </label>
-                </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#NearYouModalCenter">
-                    Plan your Green Bay Trip
-                </button>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="https://cdn.choosechicago.com/uploads/2022/06/wygyk-agnostic-A.Alexander_5cloudgateMay13-scaled.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Chicago</h5>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Favorite Chicago  
-                  </label>
-                </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#NearYouModalCenter">
-                    Plan your Chicago Trip
-                </button>
-              </div>
-            </div>
+            <location-card name="Milwaukee"></location-card>
+            <location-card name="Green Bay"></location-card>
+            <location-card name="Chicago"></location-card>
+            
+          
           </div>
 
         <!-- Near You Modal -->
-        <div class="modal fade" id="NearYouModalCenter" tabindex="-1" role="dialog" aria-labelledby="NearYouModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Trips Near You</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                  <div class="row">
-                      <div class="col">
-                          <label for="NearYouStartDate">Trip Start Date</label>
-                          <input type="date" class="" id="NearYouStartDate">
-                      </div>
-                      <div class="col">
-                          <label for="NearYouEndDate">Trip End Date</label>
-                          <input type="date" class="" id="NearYouEndDate">
-                      </div>
-                    </div>
-                    <br>
-                    <form>
-                      <div class="form-group">
-                        <label for="numOfTravelersNearYou">How many people will be on your trip?</label>
-                        <input type="number" class="form-control" id="numOfTravelersNearYou">
-                      </div>
-                      <br>
-                      <label for="">Do you need a flight?</label>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioNearYou1">
-                        <label class="form-check-label" for="flightRadio1">
-                          Yes
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioNearYou2" checked>
-                        <label class="form-check-label" for="flightRadio2">
-                          No
-                        </label>
-                      </div>
-                      <br>
-                      <label for="">Do you need a rental car?</label>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio1NearYou">
-                        <label class="form-check-label" for="rentalRadio1">
-                          Yes
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio2NearYou" checked>
-                        <label class="form-check-label" for="rentalRadio2">
-                          No
-                        </label>
-                      </div>
-                      <br>
-                      <label for="">What activites are you interested in?</label>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="NearYouCheckDefault1">
-                          <label class="form-check-label" for="NearYouCheckDefault1">
-                            Hiking
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="NearYouCheckDefault2">
-                          <label class="form-check-label" for="NearYouCheckDefault2">
-                            Day Trips
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="NearYouCheckDefault3">
-                          <label class="form-check-label" for="NearYouCheckDefault3">
-                            Local Food
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="NearYouCheckDefault4">
-                          <label class="form-check-label" for="NearYouCheckDefault4">
-                            Tours
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="NearYouCheckDefault5">
-                          <label class="form-check-label" for="NearYouCheckDefault5">
-                            Default checkbox
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="NearYouCheckDefault6">
-                          <label class="form-check-label" for="NearYouCheckDefault6">
-                            Explore Night Life
-                          </label>
-                        </div>
-                      <br>
-                      <div class="form-group">
-                        <label for="extraInformationNearYou">Extra Information</label>
-                        <textarea class="form-control" id="extraInformationNearYou" rows="3"></textarea>
-                      </div>
-                    </form>
-                    
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Save Trip</button>
-                </div>
-            </div>
-            </div>
-        </div>
+        
 
           <h1 class="topicHeader">Explore</h1>
         
           <div class="card-deck">
-            <div class="card">
-              <img class="card-img-top" src="https://www.sftravel.com/sites/default/files/styles/hero/public/2022-10/baker-beach.jpg.webp?itok=AlgDdT1G" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">San Francisco</h5>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Favorite San Francisco 
-                  </label>
-                </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ExploreModalCenter">
-                    Plan your San Francisco Trip
-                </button>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="https://cdn.britannica.com/93/94493-050-35524FED/Toronto.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Toronto</h5>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Favorite Toronto 
-                  </label>
-                </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ExploreModalCenter">
-                    Plan your Toronto Trip
-                </button>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="https://assets.editorial.aetnd.com/uploads/2009/12/gettyimages-858637934.jpg?width=768" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Grand Canyon</h5>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Favorite Grand Canyon 
-                  </label>
-                </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ExploreModalCenter">
-                    Plan your Grand Canyon Trip
-                </button>
-              </div>
-            </div>
+            <location-card name="San Francisco"></location-card>
+            <location-card name="Toronto"></location-card>
+            <location-card name="Grand Canyon"></location-card>
           </div>
 
           <!-- Explore Modal -->
-        <div class="modal fade" id="ExploreModalCenter" tabindex="-1" role="dialog" aria-labelledby="ExploreModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="ExploreTitle">Explore</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                  <div class="row">
-                      <div class="col">
-                          <label for="ExploreStartDate">Trip Start Date</label>
-                          <input type="date" class="" id="ExploreStartDate">
-                      </div>
-                      <div class="col">
-                          <label for="ExploreEndDate">Trip End Date</label>
-                          <input type="date" class="" id="ExploreEndDate">
-                      </div>
-                    </div>
-                    <br>
-                    <form>
-                      <div class="form-group">
-                        <label for="numOfTravelersExplore">How many people will be on your trip?</label>
-                        <input type="number" class="form-control" id="numOfTravelersExplore">
-                      </div>
-                      <br>
-                      <label for="">Do you need a flight?</label>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioExplore1">
-                        <label class="form-check-label" for="flightRadio1">
-                          Yes
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioExplore2" checked>
-                        <label class="form-check-label" for="flightRadio2">
-                          No
-                        </label>
-                      </div>
-                      <br>
-                      <label for="">Do you need a rental car?</label>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio1Explore">
-                        <label class="form-check-label" for="rentalRadio1">
-                          Yes
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio2Explore" checked>
-                        <label class="form-check-label" for="rentalRadio2">
-                          No
-                        </label>
-                      </div>
-                      <br>
-                      <label for="">What activites are you interested in?</label>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="ExploreCheckDefault1">
-                        <label class="form-check-label" for="ExploreCheckDefault1">
-                          Hiking
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="ExploreCheckDefault2">
-                        <label class="form-check-label" for="ExploreCheckDefault2">
-                          Day Trips
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="ExploreCheckDefault3">
-                        <label class="form-check-label" for="ExploreCheckDefault3">
-                          Local Food
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="ExploreCheckDefault4">
-                        <label class="form-check-label" for="ExploreCheckDefault4">
-                          Tours
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="ExploreCheckDefault5">
-                        <label class="form-check-label" for="ExploreCheckDefault5">
-                          Default checkbox
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="ExploreCheckDefault6">
-                        <label class="form-check-label" for="ExploreCheckDefault6">
-                          Explore Night Life
-                        </label>
-                      </div>
-                      <br>
-                      <div class="form-group">
-                        <label for="extraInformationExplore">Extra Information</label>
-                        <textarea class="form-control" id="extraInformationExplore" rows="3"></textarea>
-                      </div>
-                    </form>
-                    
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Save Trip</button>
-                </div>
-            </div>
-            </div>
-        </div>
+        <location-modal name="Top Locations">
+          <p>fakslda</p>
+          <template v-slot:header>Plan Your Trip</template>
+        </location-modal>
 
     </div>
+
+    
 
     <div class="container">
       <footer class="py-3 my-4">
@@ -633,6 +131,7 @@
       </footer>
     </div>
 
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -640,6 +139,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/components/location-card.js"></script>
+    <script src="js/components/location-modal.js"></script>
+    <script src="js/components/signin-modal.js"></script>
+    <script src="js/components/app-modal.js"></script>
+    <script src="js/components/signup-modal.js"></script>
     <script>app.mount('#app')</script>
   </body>
 </html>

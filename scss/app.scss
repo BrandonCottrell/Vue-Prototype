@@ -1,8 +1,10 @@
-$primary: #e07800;
-$secondary: #0e008f;
-$link-color: #2d7205;
+$primary: #7692ff;
+$secondary: #091540;
+$link-color: #091540;
+
 
 @import "bootstrap";
+
 
 .modal { display: block; }
 
@@ -11,6 +13,7 @@ $link-color: #2d7205;
     height: 10vw;
     object-fit: cover;
 }
+
 
 
 .container {
@@ -23,8 +26,8 @@ $link-color: #2d7205;
 }
 
 #userImg {
-    height: 20em;
-    border-radius: 250px;
+    position: relative; width: 20em; height: 20em; overflow: hidden; border-radius: 50%; object-fit: cover;
+
 }
 
 #userContainer {
@@ -53,3 +56,21 @@ div.modal-body {
 	margin-right:10px;
 	margin-top:6px;
 }
+
+.jumbotron {
+    background-image: url(https://cdn.sanity.io/images/6sugrgl1/production/9e5240303b393090493918509cf6aab4cda1c465-1440x961.jpg?rect=0,162,1440,639&w=1988&h=882&fit=crop);
+    background-size: cover;
+    color: #091540;
+}
+
+.jumboText {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#addButton {
+    align-items: right;
+}
+
+// https://coolors.co/232020-553739-955e42-9c914f-748e54
+// https://coolors.co/091540-7692ff-abd2fa-3d518c-1b2cc1

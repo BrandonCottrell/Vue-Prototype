@@ -72,21 +72,227 @@
         </div>
     </div>
 
-        <!-- Sign In Modal-->
-        <signin-modal>
-          <template v-slot:header>Sign In</template>
-        </signin-modal>
+    <!-- Sign In Modal -->
+    <div class="modal fade" id="SignInModalCenter" tabindex="-1" role="dialog" aria-labelledby="SignInModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Sign In</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                  else.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <a href="#">Forgot Password?</a>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Sign In</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <!-- Sign Up Modal-->
-        <signup-modal>
-          <template v-slot:header>Sign Up</template>
-        </signup-modal>
-
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="SignUpModalCenter" tabindex="-1" role="dialog" aria-labelledby="SignUpModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="CreateFirstName">First Name</label>
+                  <input type="text" class="form-control" id="CreateFirstName" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="CreateLastName">Last Name</label>
+                  <input type="text" class="form-control" id="CreateLastName" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputEmail4">Email</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="inputPassword4">Password</label>
+                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Create Account</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <tabbed-trips v-bind:list="tripList"></tabbed-trips>
+  <div class="container" id="userContainer">
+    <ul class="nav nav-tabs nav-justified mb-3" id="tabs-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="tabs-my-trips-tab" data-toggle="tab" href="#tabs-my-trips" role="tab"
+          aria-controls="tabs-my-trips" aria-selected="true">My Trips</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tabs-favorites-tab" data-toggle="tab" href="#tabs-favorites" role="tab"
+          aria-controls="tabs-favorites" aria-selected="false">Favorites</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" id="pills-wishlist-tab" data-toggle="pill" href="#pills-wishlist" role="tab"
+          aria-controls="pills-wishlist" aria-selected="false">Wishlist</a>
+      </li> -->
+    </ul>
+    <div class="tab-content" id="tabs-tabContent">
+      <div class="tab-pane fade show active" id="tabs-my-trips" role="tabpanel" aria-labelledby="tabs-my-trips-tab">
+        <div class="card-deck">
+          <div v-for="(item, index) in completedList" v-bind:key="item.name" class="card">
+            <img class="card-img-top"
+              src= https://static6.depositphotos.com/1160567/648/i/450/depositphotos_6482528-stock-photo-travel-destination.jpg
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div class="form-check">
+                <input v-model="item.favorited" class="form-check-input" type="checkbox" value="" v-bind:id="'Favorite-' + index ">
+                <label class="form-check-label" v-bind:for="'Favorite-' + index ">
+                  Favorite {{item.name}} 
+                </label>
+              </div>
+              <div class="form-check">
+                <input v-model="item.completed" class="form-check-input" type="checkbox" value="" v-bind:id="'MyTrip-' + index ">
+                <label class="form-check-label" v-bind:for="'MyTrip-' + index ">
+                  Complete {{item.name}} 
+                </label>
+              </div>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyTripModalCenter">
+                View your Trip
+              </button>
+              <button type="button" class="btn btn-secondary" v-on:click.prevent="deleteIt">
+                Delete your Trip
+              </button>
+            </div> 
+          </div>
+        </div>
+      </div>
 
-  
+      <div class="tab-pane fade" id="tabs-favorites" role="tabpanel" aria-labelledby="tabs-favorites-tab">
+        <div class="card-deck">
+          <div v-for="(item, index) in favoriteList" v-bind:key="item.name" class="card">
+            <img class="card-img-top"
+            src= https://static6.depositphotos.com/1160567/648/i/450/depositphotos_6482528-stock-photo-travel-destination.jpg
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div class="form-check">
+                <input v-model="item.favorited" class="form-check-input" type="checkbox" value="" v-bind:id="'Favorite-' + index ">
+                <label class="form-check-label" v-bind:for="'Favorite-' + index ">
+                  Favorite {{item.name}} 
+                </label>
+              </div>
+              <div class="form-check">
+                <input v-model="item.completed" class="form-check-input" type="checkbox" value="" v-bind:id="'MyTrip-' + index ">
+                <label class="form-check-label" v-bind:for="'MyTrip-' + index ">
+                  Complete {{item.name}} 
+                </label>
+              </div>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FavoriteModalCenter">
+                Edit your Trip
+              </button>
+              <button type="button" class="btn btn-secondary" v-on:click.prevent="deleteIt">
+                Delete your Trip
+              </button>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <!-- <div class="tab-pane fade" id="pills-wishlist" role="tabpanel" aria-labelledby="pills-wishlist-tab"><div class="card-deck">
+        <div class="card">
+          <img class="card-img-top" src="https://media.architecturaldigest.com/photos/5da74823d599ec0008227ea8/4:3/w_3000,h_2250,c_limit/GettyImages-946087016.jpg"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">New York</h5> -->
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#WishlistModalCenter">
+              Plan your New York Trip
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clipboard2-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z"/>
+              <path fill-rule="evenodd" d="M4.174 1h-.57a1.5 1.5 0 0 0-1.5 1.5v12a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-12a1.5 1.5 0 0 0-1.5-1.5h-.642c.055.156.085.325.085.5V2c0 .828-.668 1.5-1.492 1.5H5.581A1.496 1.496 0 0 1 4.09 2v-.5c0-.175.03-.344.085-.5Zm3.894 5.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top"
+            src="https://cdn.choosechicago.com/uploads/2022/06/wygyk-agnostic-A.Alexander_5cloudgateMay13-scaled.jpg"
+            alt="Card image cap ">
+          <div class="card-body">
+            <h5 class="card-title">Chicago</h5>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#WishlistModalCenter">
+              Plan your Chicago Trip
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clipboard2-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z"/>
+              <path fill-rule="evenodd" d="M4.174 1h-.57a1.5 1.5 0 0 0-1.5 1.5v12a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-12a1.5 1.5 0 0 0-1.5-1.5h-.642c.055.156.085.325.085.5V2c0 .828-.668 1.5-1.492 1.5H5.581A1.496 1.496 0 0 1 4.09 2v-.5c0-.175.03-.344.085-.5Zm3.894 5.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="https://www.sftravel.com/sites/default/files/styles/hero/public/2022-10/baker-beach.jpg.webp?itok=AlgDdT1G"
+            alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">San Francisco</h5>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#WishlistModalCenter">
+              Plan Your San Francisco Trip
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clipboard2-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10.058.501a.501.501 0 0 0-.5-.501h-2.98c-.276 0-.5.225-.5.501A.499.499 0 0 1 5.582 1a.497.497 0 0 0-.497.497V2a.5.5 0 0 0 .5.5h4.968a.5.5 0 0 0 .5-.5v-.503A.497.497 0 0 0 10.555 1a.499.499 0 0 1-.497-.499Z"/>
+              <path fill-rule="evenodd" d="M4.174 1h-.57a1.5 1.5 0 0 0-1.5 1.5v12a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-12a1.5 1.5 0 0 0-1.5-1.5h-.642c.055.156.085.325.085.5V2c0 .828-.668 1.5-1.492 1.5H5.581A1.496 1.496 0 0 1 4.09 2v-.5c0-.175.03-.344.085-.5Zm3.894 5.482c1.656-1.673 5.795 1.254 0 5.018-5.795-3.764-1.656-6.69 0-5.018Z"/>
+            </svg>
+          </div>
+        </div>
+      </div></div> -->
+    </div> 
+  </div>
   </div>
 
   <!-- My Trip Modal -->
@@ -309,6 +515,115 @@
     </div>
   </div>
 
+  <!-- Wishlist Modal
+  <div class="modal fade" id="WishlistModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="WishlistModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Wishlist Trip</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+              <div class="col">
+                  <label for="WishlistStartDate">Trip Start Date</label>
+                  <input type="date" class="" id="WishlistStartDate">
+              </div>
+              <div class="col">
+                  <label for="WishlistEndDate">Trip End Date</label>
+                  <input type="date" class="" id="WishlistEndDate">
+              </div>
+            </div>
+            <br>
+            <form>
+              <div class="form-group">
+                <label for="numOfTravelersWishlist">How many people will be on your trip?</label>
+                <input type="number" class="form-control" id="numOfTravelersWishlist">
+              </div>
+              <br>
+              <label for="">Do you need a flight?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioWishlist1">
+                <label class="form-check-label" for="flightRadio1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flightRadio" id="flightRadioWishlist2" checked>
+                <label class="form-check-label" for="flightRadio2">
+                  No
+                </label>
+              </div>
+              <br>
+              <label for="">Do you need a rental car?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio1Wishlist">
+                <label class="form-check-label" for="rentalRadio1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rentalRadio" id="rentalRadio2Wishlist" checked>
+                <label class="form-check-label" for="rentalRadio2">
+                  No
+                </label>
+              </div>
+              <br>
+              <label for="">What activites are you interested in?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault1">
+                <label class="form-check-label" for="WishlistCheckDefault1">
+                  Hiking
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault2">
+                <label class="form-check-label" for="WishlistCheckDefault2">
+                  Day Trips
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault3">
+                <label class="form-check-label" for="WishlistCheckDefault3">
+                  Local Food
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault4">
+                <label class="form-check-label" for="WishlistCheckDefault4">
+                  Tours
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault5">
+                <label class="form-check-label" for="WishlistCheckDefault5">
+                  Default checkbox
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WishlistCheckDefault6">
+                <label class="form-check-label" for="WishlistCheckDefault6">
+                  Explore Night Life
+                </label>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="extraInformationWishlist">Extra Information</label>
+                <textarea class="form-control" id="extraInformationWishlist" rows="3"></textarea>
+              </div>
+            </form>
+            
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save Trip</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
 
   <div class="container">
     <footer class="py-3 my-4">
@@ -343,12 +658,6 @@
     crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/components/tabbed-trips.js"></script>
-    <script src="js/components/location-card.js"></script>
-    <script src="js/components/location-modal.js"></script>
-    <script src="js/components/signin-modal.js"></script>
-    <script src="js/components/app-modal.js"></script>
-    <script src="js/components/signup-modal.js"></script>
     <script>app.mount('#app');</script>
 </body>
 

@@ -3,19 +3,16 @@ const app = Vue.createApp({
         return {
             newTrip: {
                 name: '',
-                startDate: '03/25/2015',
-                endDate: '03/30/2015',
-                people: 1,
-                flight: false,
-                rentalCar: false,
-                activities: '',
+                startDate: '',
+                endDate: '',
+                price: '',
                 favorited: true,
                 completed: false
             },
             tripList: [
-                {name: 'Denver...', startDate: '03/25/2015', endDate: '03/30/2015', people: 2, flight: false, rentalCar: true, activities: 'Tours', favorited: true, completed: false }, //favorited
-                {name: 'Green Bay...', startDate: '04/25/2015', endDate: '04/30/2015', people: 3, flight: true, rentalCar: false, activities: 'Day Trips', favorited: true, completed: false }, //favorited
-                {name: 'Grand Canyon...', startDate: '05/25/2015', endDate: '05/30/2015', people: 4, flight: false, rentalCar: true, activities: 'Hiking', favorited: true, completed: true } //favorited
+                {name: 'Denver', startDate: '2024-03-25', endDate: '2024-03-30', price: '$', favorited: true, completed: false }, //favorited
+                {name: 'Green Bay', startDate: '2024-04-25', endDate: '2024-04-30', price: '$$', favorited: true, completed: false }, //favorited
+                {name: 'Grand Canyon', startDate: '2024-05-25', endDate: '2024-05-30', price: '$$$', favorited: true, completed: true } //favorited
             ],
         }
     },
@@ -26,21 +23,18 @@ const app = Vue.createApp({
             // add item to the list
             this.tripList.push(this.newTrip);
 
-            // clear the form
+            //clear the form
             this.newTrip = {
                 name: '',
                 startDate: '',
                 endDate: '',
-                people: 1,
-                flight: false,
-                rentalCar: false,
-                activities: '',
+                price: '',
                 favorited: true,
                 completed: false
             };
         },
-        deleteIt: function(){
-            this.tripList.pop(this.newTrip);
+        deleteIt(item){
+            this.tripList.splice(this.tripList.indexOf(item),1);
         }
     },
     computed: {

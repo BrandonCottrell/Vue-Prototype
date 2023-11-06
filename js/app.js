@@ -1,5 +1,11 @@
 const app = Vue.createApp({
     data: function(){
+        // let trips = [
+        //     // trying to get Models to work
+        //     new Trip('Denver','2024-03-25', '2024-03-30', '$', true, false),
+        //     new Trip('Green Bay','2024-04-25', '2024-04-30', '$$', true, false),
+        //     new Trip('Grand Canyon','2024-05-25', '2024-05-30', '$$$', true, true)
+        // ];
         return {
             newTrip: {
                 name: '',
@@ -15,6 +21,7 @@ const app = Vue.createApp({
                 {name: 'Grand Canyon', startDate: '2024-05-25', endDate: '2024-05-30', price: '$$$', favorited: true, completed: true } //favorited
             ],
             editItem: {}
+            // trips: trips
         }
     },
 

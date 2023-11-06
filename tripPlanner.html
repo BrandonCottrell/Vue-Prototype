@@ -131,7 +131,7 @@
                 </label>
               </div>
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyTripModalCenter">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewTripModal" v-on:click.prevent="editItem = item">
                 View your Trip
               </button>
               <button type="button" class="btn btn-secondary m-2" v-on:click.prevent="deleteIt(item)">
@@ -185,6 +185,9 @@
   <!-- Edit Trip Modal-->
     <edit-trip-modal v-model="editItem"></edit-trip-modal>
 
+  <!-- Edit Trip Modal-->
+    <view-trip-modal v-model="editItem"></view-trip-modal>
+
 
 
   <div class="container">
@@ -221,6 +224,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/app.js"></script>
     <script src="js/comps/edit-trip-modal.js"></script>
+    <script src="js/comps/view-trip-modal.js"></script>
     <script>app.mount('#app');</script>
 </body>
 

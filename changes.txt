@@ -1,0 +1,12 @@
+* Changes made *
+-Created app-models for a trip
+-Removed the nav-bar selections so you only use tripPlanner.html
+-fixed the edit function so it lets you edit current trip
+-created an add trip button on tripPlanner
+-delete button deletes current trip instead of removing from end of array
+-changed modal for creating a new trip to get rid of unnecessary info
+-view completed modal lets you only view, not edit trip
+
+*Changes still need to be made*
+-change appearance, work on CSS
+-create more components for current working page

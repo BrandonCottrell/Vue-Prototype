@@ -14,6 +14,7 @@ const app = Vue.createApp({
                 {name: 'Green Bay', startDate: '2024-04-25', endDate: '2024-04-30', price: '$$', favorited: true, completed: false }, //favorited
                 {name: 'Grand Canyon', startDate: '2024-05-25', endDate: '2024-05-30', price: '$$$', favorited: true, completed: true } //favorited
             ],
+            editItem: {}
         }
     },
 
@@ -34,7 +35,10 @@ const app = Vue.createApp({
             };
         },
         deleteIt(item){
+            console.log(item);
+            console.log(this.tripList)
             this.tripList.splice(this.tripList.indexOf(item),1);
+
         }
     },
     computed: {

@@ -42,13 +42,13 @@ app.component('EditTripModal', {
                 <form>
                     <div class="form-group">
                     <label for="nameOfTrip">Name of Trip</label>
-                    <input v-model="editTrip.name" type="text" class="form-control" id="NameOfTrip" placeholder="Trip Name...">
+                    <input v-model="modelValue.name" type="text" class="form-control" id="NameOfTrip" placeholder="Trip Name...">
                     </div>
 
                     <div class="row">
                         <div class="col">
                             <label for="start">Start date: </label>
-                            <input v-model="editTrip.startDate" type="date" class="form-control" id="start" name="trip-start" min="2023-11-01" max="2100-12-31" />
+                            <input v-model="modelValue.startDate" type="date" class="form-control" id="start" name="trip-start" min="2023-11-01" max="2100-12-31" />
                         </div>
                         <div class="col">
                             <label for="start">End date: </label>

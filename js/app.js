@@ -1,27 +1,20 @@
 const app = Vue.createApp({
     data: function(){
-        // let trips = [
-        //     // trying to get Models to work
-        //     new Trip('Denver','2024-03-25', '2024-03-30', '$', true, false),
-        //     new Trip('Green Bay','2024-04-25', '2024-04-30', '$$', true, false),
-        //     new Trip('Grand Canyon','2024-05-25', '2024-05-30', '$$$', true, true)
-        // ];
+         let trips = [
+             // trying to get Models to work
+             new Trip('Denver','2024-03-25', '2024-03-30', '$', true, false),
+             new Trip('Green Bay','2024-04-25', '2024-04-30', '$$', true, false),
+             new Trip('Grand Canyon','2024-05-25', '2024-05-30', '$$$', true, true)
+         ];
         return {
-            newTrip: {
-                name: '',
-                startDate: '',
-                endDate: '',
-                price: '',
-                favorited: true,
-                completed: false
-            },
-            tripList: [
-                {name: 'Denver', startDate: '2024-03-25', endDate: '2024-03-30', price: '$', favorited: true, completed: false }, //favorited
-                {name: 'Green Bay', startDate: '2024-04-25', endDate: '2024-04-30', price: '$$', favorited: true, completed: false }, //favorited
-                {name: 'Grand Canyon', startDate: '2024-05-25', endDate: '2024-05-30', price: '$$$', favorited: true, completed: true } //favorited
-            ],
-            editItem: {}
-            // trips: trips
+            newTrip: new Trip(),
+            // tripList: [
+            //     {name: 'Denver', startDate: '2024-03-25', endDate: '2024-03-30', price: '$', favorited: true, completed: false }, //favorited
+            //     {name: 'Green Bay', startDate: '2024-04-25', endDate: '2024-04-30', price: '$$', favorited: true, completed: false }, //favorited
+            //     {name: 'Grand Canyon', startDate: '2024-05-25', endDate: '2024-05-30', price: '$$$', favorited: true, completed: true } //favorited
+            // ],
+            editItem: {},
+             tripList: trips
         }
     },
 
@@ -32,14 +25,7 @@ const app = Vue.createApp({
             this.tripList.push(this.newTrip);
 
             //clear the form
-            this.newTrip = {
-                name: '',
-                startDate: '',
-                endDate: '',
-                price: '',
-                favorited: true,
-                completed: false
-            };
+            this.newTrip = new Trip();
         },
         deleteIt(item){
             console.log(item);

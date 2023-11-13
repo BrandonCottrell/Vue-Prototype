@@ -48,11 +48,11 @@ app.component('ViewTripModal', {
                     <div class="row">
                         <div class="col">
                             <label for="start">Start date: </label>
-                            <input v-model="modelValue.startDate" type="date" class="form-control" id="start" name="trip-start" min="2023-11-01" max="2100-12-31" / disabled>
+                            <input v-model="modelValue.startDate" type="date" class="form-control" id="start" name="trip-start" min="2023-11-01" max="2100-12-31"  disabled>
                         </div>
                         <div class="col">
                             <label for="start">End date: </label>
-                            <input v-model="modelValue.endDate" type="date" class="form-control" id="end" name="trip-end" min="2023-11-01" max="2100-12-31" / disabled>
+                            <input v-model="modelValue.endDate" type="date" class="form-control" id="end" name="trip-end" min="2023-11-01" max="2100-12-31"  disabled>
                         </div>
                     </div>
 

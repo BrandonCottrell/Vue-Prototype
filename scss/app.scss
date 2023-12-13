@@ -13,8 +13,7 @@ $link-color: #091540;
 }
 
 .btn.btn-primary {
-    background-color: red;
-    border-color: green;
+    background-color: $primary;
 
    
 }
@@ -60,11 +59,36 @@ div.modal-body {
 	margin-top:6px;
 }
 
-.jumbotron {
+#tripPlanJumbo {
     background-image: url(https://cdn.sanity.io/images/6sugrgl1/production/9e5240303b393090493918509cf6aab4cda1c465-1440x961.jpg?rect=0,162,1440,639&w=1988&h=882&fit=crop);
     background-size: cover;
     color: #091540;
 }
+
+#homeJumbo {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empire_State_Building_Aerial.JPG/1200px-Empire_State_Building_Aerial.JPG);
+    background-size: cover;
+    color: #091540;
+}
+
+#myTripJumbo {
+    background-image: url(https://s39023.pcdn.co/wp-content/uploads/2022/03/Hiking-The-Wave-In-Arizona-Sunlight-Filling-The-Wave-Where-Are-Those-Morgans.jpg.optimal.jpg);
+    background-size: cover;
+    color: #091540;
+}
+
+#searchJumbo {
+    background-image: url(https://wwwnc.cdc.gov/travel/images/travel-industry-air.jpg);
+    background-size: cover;
+    color: #091540;
+}
+
+#result {
+    margin: auto;
+    background-color: rgb(224, 223, 223); 
+}
+
+
 
 .jumboText {
     color: white;
